@@ -34,22 +34,22 @@
   :lighter " OrgTODO"
   :keymap org-assist-todo-items-map)
 
-(defun org-assist-toggle-todo ()
+(defun org-assist-todo-items-toggle-todo ()
   "Toggle the TODO state at point."
   (interactive)
   (org-todo))
 
-(defun org-assist-insert-checkbox ()
+(defun org-assist-todo-items-insert-checkbox ()
   "Insert a new checkbox item."
   (interactive)
   (insert "- [ ] "))
 
-(defun org-assist-toggle-checkbox ()
+(defun org-assist-todo-items-toggle-checkbox ()
   "Toggle the checkbox at point."
   (interactive)
   (org-toggle-checkbox))
 
-(defun org-assist-set-priority (priority)
+(defun org-assist-todo-items-set-priority (priority)
   "Set priority of the current TODO heading."
   (interactive "cPriority (A, B, or C): ")
   (org-priority (upcase priority)))

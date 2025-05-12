@@ -35,17 +35,17 @@
   :lighter " OrgCap"
   :keymap org-assist-capture-attachments-map)
 
-(defun org-assist-capture ()
+(defun org-assist-capture-attachments-capture ()
   "Launch Org capture."
   (interactive)
   (org-capture))
 
-(defun org-assist-attach-file (file)
+(defun org-assist-capture-attachments-attach-file (file)
   "Attach FILE to current Org entry."
   (interactive "fFile to attach: ")
   (org-attach-attach file nil 'cp))
 
-(defun org-assist-open-attachment ()
+(defun org-assist-capture-attachments-open-attachment ()
   "Open the attachment directory for current entry."
   (interactive)
   (org-attach-open))

@@ -34,23 +34,23 @@
   :lighter " OrgProps"
   :keymap org-assist-properties-columns-map)
 
-(defun org-assist-insert-property (key value)
+(defun org-assist-properties-columns-insert-property (key value)
   "Insert or update a property with KEY and VALUE."
   (interactive "sProperty key: \nsProperty value: ")
   (org-set-property key value))
 
-(defun org-assist-delete-property (key)
+(defun org-assist-properties-columns-delete-property (key)
   "Delete property with KEY from the current entry."
   (interactive "sProperty key to delete: ")
   (org-delete-property key))
 
-(defun org-assist-insert-properties-drawer ()
+(defun org-assist-properties-columns-insert-properties-drawer ()
   "Insert an empty properties drawer."
   (interactive)
   (insert ":PROPERTIES:\n:END:\n")
   (forward-line -1))
 
-(defun org-assist-set-column-view (format)
+(defun org-assist-properties-columns-set-column-view (format)
   "Set the column view format string."
   (interactive "sColumn format (e.g., %50ITEM(Task) %10Effort(Effort)): ")
   (insert (format "#+COLUMNS: %s\n" format)))

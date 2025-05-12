@@ -34,18 +34,18 @@
   :lighter " OrgPub"
   :keymap org-assist-publishing-map)
 
-(defun org-assist-publish-project (project)
+(defun org-assist-publishing-publish-project (project)
   "Publish the given PROJECT using Org publishing."
   (interactive
    (list (completing-read "Publish project: " (mapcar #'car org-publish-project-alist))))
   (org-publish project t))
 
-(defun org-assist-publish-all ()
+(defun org-assist-publishing-publish-all ()
   "Publish all projects defined in `org-publish-project-alist'."
   (interactive)
   (org-publish-all t))
 
-(defun org-assist-edit-project-alist ()
+(defun org-assist-publishing-edit-project-alist ()
   "Open your init file or config file to edit `org-publish-project-alist'."
   (interactive)
   (find-file user-init-file)

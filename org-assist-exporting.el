@@ -36,27 +36,27 @@
   :lighter " OrgExport"
   :keymap org-assist-exporting-map)
 
-(defun org-assist-export-html ()
+(defun org-assist-exporting-export-html ()
   "Export the current buffer to HTML."
   (interactive)
   (org-html-export-to-html))
 
-(defun org-assist-export-latex ()
+(defun org-assist-exporting-export-latex ()
   "Export the current buffer to LaTeX."
   (interactive)
   (org-latex-export-to-latex))
 
-(defun org-assist-export-pdf ()
+(defun org-assist-exporting-export-pdf ()
   "Export the current buffer to PDF via LaTeX."
   (interactive)
   (org-latex-export-to-pdf))
 
-(defun org-assist-export-markdown ()
+(defun org-assist-exporting-export-markdown ()
   "Export the current buffer to Markdown."
   (interactive)
   (org-export-to-file 'md (concat (file-name-sans-extension (buffer-file-name)) ".md")))
 
-(defun org-assist-export-async ()
+(defun org-assist-exporting-export-async ()
   "Prompt for export backend and export asynchronously."
   (interactive)
   (let ((backend (intern (completing-read "Export backend: " '("html" "latex" "md" "ascii")))))

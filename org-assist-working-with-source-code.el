@@ -35,23 +35,23 @@
   :lighter " OrgSrc"
   :keymap org-assist-working-with-source-code-map)
 
-(defun org-assist-insert-src-block (lang)
+(defun org-assist-working-with-source-code-insert-src-block (lang)
   "Insert a source block for LANG."
   (interactive "sLanguage: ")
   (insert (format "#+begin_src %s\n\n#+end_src\n" lang))
   (forward-line -1))
 
-(defun org-assist-edit-src-block ()
+(defun org-assist-working-with-source-code-edit-src-block ()
   "Open the current source block in its editing buffer."
   (interactive)
   (org-edit-special))
 
-(defun org-assist-execute-src-block ()
+(defun org-assist-working-with-source-code-execute-src-block ()
   "Execute the current source block."
   (interactive)
   (org-babel-execute-src-block))
 
-(defun org-assist-remove-results ()
+(defun org-assist-working-with-source-code-remove-results ()
   "Remove results of the current source block."
   (interactive)
   (org-babel-remove-result))

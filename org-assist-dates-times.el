@@ -35,27 +35,27 @@
   :lighter " OrgTime"
   :keymap org-assist-dates-times-map)
 
-(defun org-assist-insert-timestamp ()
+(defun org-assist-dates-times-insert-timestamp ()
   "Insert an active timestamp."
   (interactive)
   (org-insert-time-stamp (current-time) t t))
 
-(defun org-assist-insert-deadline ()
+(defun org-assist-dates-times-insert-deadline ()
   "Insert a DEADLINE timestamp."
   (interactive)
   (org-deadline nil (org-read-date)))
 
-(defun org-assist-insert-scheduled ()
+(defun org-assist-dates-times-insert-scheduled ()
   "Insert a SCHEDULED timestamp."
   (interactive)
   (org-schedule nil (org-read-date)))
 
-(defun org-assist-clock-in ()
+(defun org-assist-dates-times-clock-in ()
   "Clock in to the current task."
   (interactive)
   (org-clock-in))
 
-(defun org-assist-clock-out ()
+(defun org-assist-dates-times-clock-out ()
   "Clock out of the current task."
   (interactive)
   (org-clock-out))

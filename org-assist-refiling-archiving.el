@@ -32,17 +32,17 @@
   :lighter " OrgRefile"
   :keymap org-assist-refiling-archiving-map)
 
-(defun org-assist-refile ()
+(defun org-assist-refiling-archiving-refile ()
   "Refile the current subtree using Org's refile interface."
   (interactive)
   (org-refile))
 
-(defun org-assist-archive ()
+(defun org-assist-refiling-archiving-archive ()
   "Archive the current subtree using default method."
   (interactive)
   (org-archive-set-tag))
 
-(defun org-assist-archive-subtree ()
+(defun org-assist-refiling-archiving-archive-subtree ()
   "Move the current subtree to the archive file."
   (interactive)
   (org-archive-subtree-default))

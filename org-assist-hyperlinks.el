@@ -33,17 +33,17 @@
   :lighter " OrgLinks"
   :keymap org-assist-hyperlinks-map)
 
-(defun org-assist-insert-link (link desc)
+(defun org-assist-hyperlinks-insert-link (link desc)
   "Insert an Org hyperlink with LINK and DESC."
   (interactive "sLink (URL or file): \nsDescription: ")
   (insert (format "[[%s][%s]]" link desc)))
 
-(defun org-assist-follow-link-at-point ()
+(defun org-assist-hyperlinks-follow-link-at-point ()
   "Follow the Org link at point."
   (interactive)
   (org-open-at-point))
 
-(defun org-assist-store-link ()
+(defun org-assist-hyperlinks-store-link ()
   "Store a link to the current location."
   (interactive)
   (org-store-link))

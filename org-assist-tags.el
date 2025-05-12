@@ -34,24 +34,24 @@
   :lighter " OrgTags"
   :keymap org-assist-tags-map)
 
-(defun org-assist-add-tag (tag)
+(defun org-assist-tags-add-tag (tag)
   "Add TAG to the current heading."
   (interactive "sTag to add: ")
   (org-set-tags-to (cons tag (org-get-tags))))
 
-(defun org-assist-remove-tag (tag)
+(defun org-assist-tags-remove-tag (tag)
   "Remove TAG from the current heading."
   (interactive "sTag to remove: ")
   (let ((tags (remove tag (org-get-tags))))
     (org-set-tags-to tags)))
 
-(defun org-assist-toggle-inheritance ()
+(defun org-assist-tags-toggle-inheritance ()
   "Toggle tag inheritance for this buffer."
   (interactive)
   (setq org-use-tag-inheritance (not org-use-tag-inheritance))
   (message "Tag inheritance %s" (if org-use-tag-inheritance "enabled" "disabled")))
 
-(defun org-assist-search-by-tag (tag)
+(defun org-assist-tags-search-by-tag (tag)
   "Search for TAG in buffer using Org sparse tree."
   (interactive "sSearch tag: ")
   (org-match-sparse-tree nil tag))

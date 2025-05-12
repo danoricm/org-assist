@@ -33,18 +33,18 @@
   :lighter " OrgCite"
   :keymap org-assist-citation-handling-map)
 
-(defun org-assist-insert-citation (key)
+(defun org-assist-citation-handling-insert-citation (key)
   "Insert a citation with a given KEY."
   (interactive "sCitation key: ")
   (insert (format "[cite:@%s]" key)))
 
-(defun org-assist-set-citation-style (style)
+(defun org-assist-citation-handling-set-citation-style (style)
   "Set the citation export STYLE (CSL format)."
   (interactive "fCSL style file: ")
   (setq org-cite-csl-style (expand-file-name style))
   (message "Citation style set to: %s" org-cite-csl-style))
 
-(defun org-assist-open-bibliography ()
+(defun org-assist-citation-handling-open-bibliography ()
   "Open the default bibliography file."
   (interactive)
   (find-file (car org-cite-global-bibliography)))

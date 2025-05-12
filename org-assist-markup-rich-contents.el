@@ -36,7 +36,7 @@
   :lighter " OrgMarkup"
   :keymap org-assist-markup-rich-contents-map)
 
-(defun org-assist--wrap-region-or-insert (open close)
+(defun org-assist-markup-rich-contents--wrap-region-or-insert (open close)
   "Wrap active region or insert OPEN and CLOSE pair."
   (if (use-region-p)
       (let ((beg (region-beginning))
@@ -49,32 +49,32 @@
     (insert open close)
     (backward-char (length close))))
 
-(defun org-assist-bold ()
+(defun org-assist-markup-rich-contents-bold ()
   "Insert or wrap bold markup."
   (interactive)
   (org-assist--wrap-region-or-insert "*" "*"))
 
-(defun org-assist-italic ()
+(defun org-assist-markup-rich-contents-italic ()
   "Insert or wrap italic markup."
   (interactive)
   (org-assist--wrap-region-or-insert "/" "/"))
 
-(defun org-assist-underline ()
+(defun org-assist-markup-rich-contents-underline ()
   "Insert or wrap underline markup."
   (interactive)
   (org-assist--wrap-region-or-insert "_" "_"))
 
-(defun org-assist-verbatim ()
+(defun org-assist-markup-rich-contents-verbatim ()
   "Insert or wrap verbatim markup."
   (interactive)
   (org-assist--wrap-region-or-insert "=" "="))
 
-(defun org-assist-code ()
+(defun org-assist-markup-rich-contents-code ()
   "Insert or wrap code markup."
   (interactive)
   (org-assist--wrap-region-or-insert "~" "~"))
 
-(defun org-assist-latex-fragment ()
+(defun org-assist-markup-rich-contents-latex-fragment ()
   "Insert or wrap LaTeX math fragment."
   (interactive)
   (org-assist--wrap-region-or-insert "$" "$"))

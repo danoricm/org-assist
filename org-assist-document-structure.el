@@ -67,25 +67,25 @@
   :keymap org-assist-document-structure-map)
 
 ;;; Headlines
-(defun org-assist-insert-headline ()
+(defun org-assist-document-structure-insert-headline ()
   (interactive)
   (org-end-of-subtree t t)
   (insert (format "\n%s " (make-string (org-current-level) ?*))))
 
-(defun org-assist-insert-child-headline ()
+(defun org-assist-document-structure-insert-child-headline ()
   (interactive)
   (org-end-of-subtree t t)
   (insert (format "\n%s " (make-string (1+ (org-current-level)) ?*))))
 
-(defun org-assist-promote-headline ()
+(defun org-assist-document-structure-promote-headline ()
   (interactive)
   (org-promote-subtree))
 
-(defun org-assist-demote-headline ()
+(defun org-assist-document-structure-demote-headline ()
   (interactive)
   (org-demote-subtree))
 
-(defun org-assist-cycle-headline-levels ()
+(defun org-assist-document-structure-cycle-headline-levels ()
   (interactive)
   (let ((current (org-current-level)))
     (save-excursion
@@ -94,11 +94,11 @@
       (insert (make-string (if (>= current 5) 1 (1+ current)) ?*)))))
 
 ;;; Visibility
-(defun org-assist-toggle-visibility () (interactive) (org-cycle))
-(defun org-assist-cycle-global () (interactive) (org-global-cycle))
-(defun org-assist-cycle-local () (interactive) (org-cycle))
+(defun org-assist-document-structure-toggle-visibility () (interactive) (org-cycle))
+(defun org-assist-document-structure-cycle-global () (interactive) (org-global-cycle))
+(defun org-assist-document-structure-cycle-local () (interactive) (org-cycle))
 
-(defun org-assist-set-initial-visibility ()
+(defun org-assist-document-structure-set-initial-visibility ()
   (interactive)
   (let ((vis (completing-read "Startup visibility: " '("showall" "overview" "showeverything"))))
     (save-excursion
@@ -108,23 +108,23 @@
         (insert "#+STARTUP: " vis "\n")))))
 
 ;;; Motion
-(defun org-assist-goto-next-heading () (interactive) (org-next-visible-heading 1))
-(defun org-assist-goto-previous-heading () (interactive) (org-previous-visible-heading 1))
-(defun org-assist-goto-parent-heading () (interactive) (outline-up-heading 1))
-(defun org-assist-goto-top-level-heading () (interactive) (org-back-to-heading t))
+(defun org-assist-document-structure-goto-next-heading () (interactive) (org-next-visible-heading 1))
+(defun org-assist-document-structure-goto-previous-heading () (interactive) (org-previous-visible-heading 1))
+(defun org-assist-document-structure-goto-parent-heading () (interactive) (outline-up-heading 1))
+(defun org-assist-document-structure-goto-top-level-heading () (interactive) (org-back-to-heading t))
 
 ;;; Structure Editing
-(defun org-assist-move-subtree-up () (interactive) (org-move-subtree-up))
-(defun org-assist-move-subtree-down () (interactive) (org-move-subtree-down))
-(defun org-assist-copy-subtree () (interactive) (org-copy-subtree))
-(defun org-assist-cut-subtree () (interactive) (org-cut-subtree))
-(defun org-assist-insert-subtree-from-clipboard () (interactive) (org-paste-subtree))
+(defun org-assist-document-structure-move-subtree-up () (interactive) (org-move-subtree-up))
+(defun org-assist-document-structure-move-subtree-down () (interactive) (org-move-subtree-down))
+(defun org-assist-document-structure-copy-subtree () (interactive) (org-copy-subtree))
+(defun org-assist-document-structure-cut-subtree () (interactive) (org-cut-subtree))
+(defun org-assist-document-structure-insert-subtree-from-clipboard () (interactive) (org-paste-subtree))
 
 ;;; Sparse Trees
-(defun org-assist-sparse-todo () (interactive) (org-sparse-tree nil "TODO"))
-(defun org-assist-sparse-tag () (interactive) (org-sparse-tree nil (read-string "Tag: ")))
-(defun org-assist-sparse-regexp () (interactive) (org-sparse-tree nil (read-regexp "Regexp: ")))
-(defun org-assist-sparse-interactive ()
+(defun org-assist-document-structure-sparse-todo () (interactive) (org-sparse-tree nil "TODO"))
+(defun org-assist-document-structure-sparse-tag () (interactive) (org-sparse-tree nil (read-string "Tag: ")))
+(defun org-assist-document-structure-sparse-regexp () (interactive) (org-sparse-tree nil (read-regexp "Regexp: ")))
+(defun org-assist-document-structure-sparse-interactive ()
   (interactive)
   (let ((choice (completing-read "Sparse tree by: " '("TODO" "TAG" "REGEXP"))))
     (cl-case (intern (downcase choice))
@@ -133,15 +133,15 @@
       (regexp (call-interactively 'org-assist-sparse-regexp)))))
 
 ;;; Lists
-(defun org-assist-insert-bullet-list ()
+(defun org-assist-document-structure-insert-bullet-list ()
   (interactive)
   (insert "- "))
 
-(defun org-assist-insert-numbered-list ()
+(defun org-assist-document-structure-insert-numbered-list ()
   (interactive)
   (insert "1. "))
 
-(defun org-assist-convert-list-type ()
+(defun org-assist-document-structure-convert-list-type ()
   (interactive)
   (save-excursion
     (beginning-of-line)
@@ -150,43 +150,43 @@
     (when (looking-at "[ 	]*[0-9]+\. ")
       (replace-match "- "))))
 
-(defun org-assist-promote-list-item () (interactive) (org-indent-item -1))
-(defun org-assist-demote-list-item () (interactive) (org-indent-item 1))
+(defun org-assist-document-structure-promote-list-item () (interactive) (org-indent-item -1))
+(defun org-assist-document-structure-demote-list-item () (interactive) (org-indent-item 1))
 
 ;;; Drawers
-(defun org-assist-insert-drawer (name)
+(defun org-assist-document-structure-insert-drawer (name)
   (interactive "sDrawer name: ")
   (insert (format ":%s:\n\n:%s:\n" (upcase name) (upcase name)))
   (forward-line -1))
 
-(defun org-assist-insert-properties-drawer ()
+(defun org-assist-document-structure-insert-properties-drawer ()
   (interactive)
   (insert ":PROPERTIES:\n:CREATED: \n:END:\n")
   (forward-line -2))
 
-(defun org-assist-toggle-drawer-visibility ()
+(defun org-assist-document-structure-toggle-drawer-visibility ()
   (interactive)
   (save-excursion
     (outline-next-heading)
     (outline-hide-subtree)))
 
 ;;; Blocks
-(defun org-assist-insert-block (type)
+(defun org-assist-document-structure-insert-block (type)
   (interactive (list (completing-read "Block type: " '("quote" "example" "center" "comment" "verse" "src"))))
   (insert (format "#+begin_%s\n\n#+end_%s\n" type type))
   (forward-line -1))
 
-(defun org-assist-insert-src-block ()
+(defun org-assist-document-structure-insert-src-block ()
   (interactive)
   (let ((lang (completing-read "Source language: " '("emacs-lisp" "python" "sh" "org" "html"))))
     (insert (format "#+begin_src %s\n\n#+end_src\n" lang))
     (forward-line -1)))
 
-(defun org-assist-block-menu ()
+(defun org-assist-document-structure-block-menu ()
   (interactive)
   (call-interactively #'org-assist-insert-block))
 
-(defun org-assist-wrap-region-in-block (type)
+(defun org-assist-document-structure-wrap-region-in-block (type)
   (interactive (list (completing-read "Block type: " '("quote" "example" "center" "comment" "verse" "src"))))
   (let ((beg (region-beginning))
         (end (region-end)))

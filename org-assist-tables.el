@@ -35,20 +35,20 @@
   :lighter " OrgTbls"
   :keymap org-assist-tables-map)
 
-(defun org-assist-create-table (rows cols)
+(defun org-assist-tables-create-table (rows cols)
   "Create a new Org table with ROWS and COLS."
   (interactive "nRows: \nnCols: ")
   (dotimes (_ rows)
     (insert (mapconcat (lambda (_) "|") (make-list (1+ cols) nil) "") "|\n"))
   (forward-line (- rows)))
 
-(defun org-assist-align-table ()
+(defun org-assist-tables-align-table ()
   "Align the current Org table."
   (interactive)
   (when (org-at-table-p)
     (org-table-align)))
 
-(defun org-assist-insert-formula ()
+(defun org-assist-tables-insert-formula ()
   "Prompt and insert a formula for current table."
   (interactive)
   (let ((formula (read-string "Formula (e.g., $3=$1+$2): ")))
@@ -56,13 +56,13 @@
       (goto-char (org-table-end))
       (insert "#+TBLFM: " formula "\n"))))
 
-(defun org-assist-next-table-field ()
+(defun org-assist-tables-next-table-field ()
   "Move to the next table field."
   (interactive)
   (when (org-at-table-p)
     (org-table-next-field)))
 
-(defun org-assist-previous-table-field ()
+(defun org-assist-tables-previous-table-field ()
   "Move to the previous table field."
   (interactive)
   (when (org-at-table-p)

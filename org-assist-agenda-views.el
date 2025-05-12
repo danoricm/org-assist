@@ -35,23 +35,23 @@
   :lighter " OrgAgenda"
   :keymap org-assist-agenda-views-map)
 
-(defun org-assist-open-agenda ()
+(defun org-assist-agenda-views-open-agenda ()
   "Open the default Org agenda."
   (interactive)
   (org-agenda nil "a"))
 
-(defun org-assist-custom-agenda ()
+(defun org-assist-agenda-views-custom-agenda ()
   "Prompt and run a custom agenda command."
   (interactive)
   (let ((key (read-string "Custom agenda key: ")))
     (org-agenda nil key)))
 
-(defun org-assist-week-view ()
+(defun org-assist-agenda-views-week-view ()
   "Open the agenda in weekly view."
   (interactive)
   (org-agenda-list nil nil 7))
 
-(defun org-assist-day-view ()
+(defun org-assist-agenda-views-day-view ()
   "Open the agenda in daily view."
   (interactive)
   (org-agenda-list nil nil 1))
